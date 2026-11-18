@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Años - Camila Chew Almanza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --morado-oscuro: #3b1d4a;
+            --morado-principal: #5e3370;
+            --dorado: #f3c653;
+            --dorado-oscuro: #b78103;
+        }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            background: linear-gradient(135deg, #150824, #2b123d, #0d0414);
+            color: #f3e5f5; 
+            text-align: center; 
+            overflow-x: hidden;
+        }
+
+        h1, h2 { font-family: 'Great Vibes', cursive; font-weight: normal; margin: 10px 0; }
+        
+        /* Farolillos flotantes */
+        .farolillo {
+            position: fixed; bottom: -50px; background: radial-gradient(circle, #fff3a1, #f3c653);
+            border-radius: 50%; box-shadow: 0 0 20px #f3c653; animation: subir 8s infinite ease-in; z-index: 0; opacity: 0.7;
+        }
+        @keyframes subir {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+        }
+
+        /* Portada */
+        .hero {
+            position: relative; background: linear-gradient(rgba(26, 10, 42, 0.8), rgba(13, 4, 20, 0.95)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200') center/cover;
+            padding: 90px 20px; border-bottom: 4px solid var(--dorado); z-index: 1;
+        }
+        .hero h1 { font-size: 5rem; color: var(--dorado); text-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+
+        /* Secciones y Tarjetas */
+        section { position: relative; max-width: 700px; margin: 40px auto; padding: 0 20px; z-index: 1; }
+        h2 { font-size: 3.5rem; color: var(--dorado); }
+        .card { 
+            background: rgba(255, 255, 255, 0.96); color: var(--morado-oscuro); padding: 30px; 
+            border-radius: 20px; border: 2px solid var(--dorado); box-shadow: 0 10px 30px rgba(0,0,0,0.4); text-align: left; 
+        }
+
+        /* Contador */
+        .contador { display: flex; justify-content: center; gap: 12px; margin-top: 15px; }
+        .caja { 
+            background: var(--morado-oscuro); color: var(--dorado); padding: 15px 10px; 
+            border-radius: 10px; border: 1px solid var(--dorado); min-width: 65px; font-size: 1.4rem; font-family: 'Cinzel', serif; 
+        }
+        .caja small { display: block; color: #fff; font-size: 0.65rem; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+
+        /* Mapa e Inputs */
+        iframe { width: 100%; height: 250px; border: 2px solid var(--dorado-oscuro); border-radius: 10px; margin-top: 10px; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #d1c4e9; box-sizing: border-box; margin-bottom: 10px; background: #faf5fc; }
+        
+        button { 
+            width: 100%; background: linear-gradient(135deg, #f3c653, #d4981d); color: var(--morado-oscuro); 
+            font-weight: bold; border: none; padding: 14px; border-radius: 25px; cursor: pointer; font-size: 1.1rem; 
+            font-family: 'Cinzel', serif; box-shadow: 0 4px 15px rgba(0,0,0,0.2); margin-top: 5px;
+        }
+        button:hover { background: #ffe599; }
+
+        .btn-asistire { background: linear-gradient(135deg, #4caf50, #2e7d32) !important; color: white !important; }
+        .btn-no-asistire { background: linear-gradient(135deg, #e53935, #c62828) !important; color: white !important; margin-top: 10px; }
+
+        .panel-secundario, .alerta-error, #mensaje-exito, #mensaje-ya-registrado { display: none; }
+        .alerta-error { color: #c62828; font-weight: bold; margin-top: 8px; text-align: center; }
+        .panel-secundario { background: #f3e5f5; padding: 20px; border-radius: 10px; border: 1px solid var(--dorado); margin-top: 15px; text-align: center; }
+
+        footer { background: #0d0414; color: var(--dorado); padding: 25px; margin-top: 50px; border-top: 2px solid var(--dorado); font-family: 'Cinzel', serif; }
+    </style>
+</head>
+<body>
+
+    <!-- Música automática -->
+    <audio id="musica" loop autoplay>
+        <source src="https://actions.google.com/sounds/v1/ambiences/magical_bells.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Farolillos -->
+    <div class="farolillo" style="left: 15%; width: 15px; height: 15px; animation-duration: 7s;"></div>
+    <div class="farolillo" style="left: 45%; width: 22px; height: 22px; animation-duration: 9s;"></div>
+    <div class="farolillo" style="left: 80%; width: 18px; height: 18px; animation-duration: 8s;"></div>
+
+    <!-- Portada -->
+    <header class="hero">
+        <div style="font-size: 3.5rem; color: var(--dorado);">☀️</div>
+        <p style="color: var(--dorado); font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 0.85rem;">AL FIN VEO LA LUZ...</p>
+        <h1>Mis XV Años</h1>
+        <p style="font-size: 2.5rem; font-family: 'Great Vibes', cursive; color: var(--dorado);">Camila Chew Almanza</p>
+        <p style="font-family: 'Cinzel', serif; letter-spacing: 1px; margin-top: 10px;">20 DE MARZO, 2027</p>
+    </header>
+
+    <!-- Cuenta regresiva -->
+    <section>
+        <h2>Faltan tan solo...</h2>
+        <div class="contador" id="reloj"></div>
+    </section>
+
+    <!-- Ubicación -->
+    <section>
+        <h2>Ubicación</h2>
+        <div class="card">
+            <p style="text-align: center;"><strong>Recepción:</strong> 3:00 PM<br><strong>Lugar:</strong> Jardín Cuernavaca</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.9877024888065!2d-99.1981804!3d18.9034504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cddf000a0a392b%3A0x8e855b08b43cf3d!2sSmFyZMOtbiBDdWVybmF2YWNh!5e0!3m2!1ses-419!2smx!4v1680000000000!5m2!1ses-419!2smx" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Confirmación de Asistencia -->
+    <section>
+        <h2>Confirma tu Asistencia</h2>
+        <div class="card">
+            <!-- Paso 1: Búsqueda -->
+            <div id="paso-busqueda">
+                <p style="color: var(--morado-principal); font-weight: 600;">Ingresa tu nombre o el de tu familia:</p>
+                <input type="text" id="nombre-ingresado" placeholder="Ej. Angel Chew o Patricia Almanza">
+                <button onclick="buscarInvitado()">Consultar Pases</button>
+                <p id="error-msg" class="alerta-error"></p>
+            </div>
+
+            <!-- Aviso de Ya Registrado -->
+            <div id="mensaje-ya-registrado" class="panel-secundario" style="display:none;">
+                <h3 style="font-family: 'Cinzel', serif; color: #b78103; margin-top:0;">⚠️ ¡Atención!</h3>
+                <p style="color: var(--morado-oscuro); font-weight: 600;">El registro para <span id="nombre-repetido" style="text-transform: uppercase;"></span> ya fue completado con anterioridad.</p>
+                <p style="font-size: 0.9rem; color: #555;">Si necesitas hacer algún cambio, comunícate con los anfitriones.</p>
+            </div>
+
+            <!-- Paso 2: Resultado de pases y Botones de Asistiré / No Asistiré -->
+            <div id="paso-resultado" class="panel-secundario">
+                <h3 style="font-family: 'Cinzel', serif; color: var(--morado-oscuro); margin-top:0;">¡Hola, <span id="nombre-encontrado"></span>!</h3>
+                <p>Tienes asignados <strong id="numero-pases" style="color: var(--dorado-oscuro); font-size: 1.3rem;"></strong> pases.</p>
+                <p style="font-weight: 600; margin-bottom: 15px;">¿Nos acompañarás en este día tan especial?</p>
+                
+                <button class="btn-asistire" onclick="seleccionarRespuesta(true)">✨ Sí, ¡Sí Asistiré! ✨</button>
+                <button class="btn-no-asistire" onclick="seleccionarRespuesta(false)">No podré asistir</button>
+            </div>
+
+            <!-- Paso 3: Inputs de nombres (Solo si asiste) -->
+            <div id="paso-nombres" class="panel-secundario">
+                <h3 style="font-family: 'Cinzel', serif; color: var(--morado-oscuro); margin-top:0;">Nombres de los asistentes</h3>
+                <div id="contenedor-inputs-nombres"></div>
+                <p id="error-nombres" class="alerta-error">Escribe al menos un nombre.</p>
+                <button id="btn-finalizar" onclick="finalizarRegistro()" style="background: #4caf50; color: white;">Finalizar Registro</button>
+            </div>
+
+            <!-- Paso 4: Éxito (Si asiste) -->
+            <div id="mensaje-exito" style="text-align: center; padding: 15px;">
+                <h3 style="font-family: 'Cinzel', serif; color: #2e7d32;">✨ ¡Registro Exitoso! ✨</h3>
+                <ul id="resumen-asistentes" style="list-style: none; padding: 0; color: var(--morado-oscuro); font-weight: 600;"></ul>
+                <p style="color: var(--dorado-oscuro); font-family: 'Cinzel', serif; margin-top: 10px;">¡Nos vemos en el evento! 🏮</p>
+            </div>
+
+            <!-- Paso 5: Mensaje si NO asiste -->
+            <div id="mensaje-no-asiste" style="text-align: center; padding: 20px; display:none;">
+                <h3 style="font-family: 'Cinzel', serif; color: #c62828;">Lamentamos que no nos acompañes</h3>
+                <p style="color: var(--morado-oscuro); font-weight: 600;">Agradecemos mucho que nos hayas avisado. ¡Te llevaremos en el corazón!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>✨ ¡Te esperamos en este mágico día! ✨</footer>
+
+    <script>
+        const URL_SHEETS = "https://script.google.com/macros/s/AKfycbwgupSxbabg2rqPdvdL0uMWfY4a9yqSYC5GBDQuWIZxK2iExlQWVb2IMNtSgn-0KHs7YA/exec";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('musica');
+            audio.volume = 0.4;
+            audio.play().catch(() => {
+                window.addEventListener('click', () => audio.play(), { once: true });
+            });
+        });
+
+        const listaInvitados = [
+            { nombre: "Angel Chew Almanza", pases: 4 },
+            { nombre: "Patricia Almanza Martinez", pases: 2 },
+            { nombre: "Rene Chew Herrera", pases: 3 },
+            { nombre: "Yishela Chew Herrera", pases: 5 },
+            { nombre: "Jesus Almanza Martinez", pases: 1 }
+        ];
+
+        let invitadoActual = null;
+
+        function buscarInvitado() {
+            const val = document.getElementById("nombre-ingresado").value.trim().toLowerCase();
+            const err = document.getElementById("error-msg");
+            
+            if (!val) { err.innerText = "Escribe un nombre."; err.style.display = "block"; return; }
+
+            invitadoActual = listaInvitados.find(inv => inv.nombre.toLowerCase().includes(val));
+
+            if (invitadoActual) {
+                err.style.display = "none";
+                document.getElementById("paso-busqueda").style.display = "none";
+
+                const yaRegistrado = localStorage.getItem("registrado_" + invitadoActual.nombre);
+
+                if (yaRegistrado) {
+                    document.getElementById("nombre-repetido").innerText = invitadoActual.nombre;
+                    document.getElementById("mensaje-ya-registrado").style.display = "block";
+                    return;
+                }
+
+                document.getElementById("nombre-encontrado").innerText = invitadoActual.nombre.toUpperCase();
+                document.getElementById("numero-pases").innerText = invitadoActual.pases;
+                document.getElementById("paso-resultado").style.display = "block";
+            } else {
+                err.innerText = "No encontramos este nombre en la lista.";
+                err.style.display = "block";
+            }
+        }
+
+        function seleccionarRespuesta(asistira) {
+            document.getElementById("paso-resultado").style.display = "none";
+
+            if (asistira) {
+                // Si asiste, mostrar inputs para registrar los nombres
+                const cont = document.getElementById("contenedor-inputs-nombres");
+                cont.innerHTML = "";
+
+                for (let i = 1; i <= invitadoActual.pases; i++) {
+                    cont.innerHTML += `<input type="text" class="input-asistente" placeholder="Asistente ${i}">`;
+                }
+                document.getElementById("paso-nombres").style.display = "block";
+            } else {
+                // Si NO asiste, enviar directamente a Google Sheets que no asistirá
+                enviarDatosASheets(["No asistirá"]);
+                document.getElementById("mensaje-no-asiste").style.display = "block";
+            }
+        }
+
+        function finalizarRegistro() {
+            const inputs = document.querySelectorAll(".input-asistente");
+            const nombres = Array.from(inputs).map(i => i.value.trim()).filter(Boolean);
+            const err = document.getElementById("error-nombres");
+
+            if (nombres.length === 0) { err.style.display = "block"; return; }
+            err.style.display = "none";
+
+            enviarDatosASheets(nombres);
+
+            document.getElementById("paso-nombres").style.display = "none";
+            const resumen = document.getElementById("resumen-asistentes");
+            nombres.forEach((n, idx) => resumen.innerHTML += `<li>✨ Pase ${idx+1}: ${n}</li>`);
+            document.getElementById("mensaje-exito").style.display = "block";
+        }
+
+        function enviarDatosASheets(asistentesArray) {
+            const btn = document.getElementById("btn-finalizar");
+            if(btn) { btn.innerText = "Guardando..."; btn.disabled = true; }
+
+            fetch(URL_SHEETS, {
+                method: "POST", mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    familia: invitadoActual.nombre.toUpperCase(), 
+                    pases: invitadoActual.pases, 
+                    asistentes: asistentesArray 
+                })
+            }).then(() => {
+                localStorage.setItem("registrado_" + invitadoActual.nombre, "true");
+            }).catch(() => {
+                console.error("Error al sincronizar con Google Sheets");
+            });
+        }
+
+        // Cuenta regresiva (20 de marzo de 2027 a las 3:00 PM)
+        const meta = new Date(2027, 2, 20, 15, 0, 0).getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = meta - now;
+            const reloj = document.getElementById("reloj");
+            if (!reloj) return;
+
+            if (d < 0) { reloj.innerHTML = "¡Hoy es el gran día!"; return; }
+
+            reloj.innerHTML = `
+                <div class="caja">${Math.floor(d/86400000)}<small>Días</small></div>
+                <div class="caja">${Math.floor((d%86400000)/3600000)}<small>Hrs</small></div>
+                <div class="caja">${Math.floor((d%3600000)/60000)}<small>Min</small></div>
+                <div class="caja">${Math.floor((d%60000)/1000)}<small>Seg</small></div>`;
+        }, 1000);
+    </script>
+</body>
+</html>
